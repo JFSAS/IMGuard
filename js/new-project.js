@@ -9,17 +9,14 @@ document.addEventListener('DOMContentLoaded', function() {
             // 根据点击的菜单项进行页面导航
             const menuSpan = this.querySelector('span');
             const menuText = menuSpan ? menuSpan.textContent.trim() : '';
-            console.log(menuText);
             if (menuText === 'Dashboard') {
                 window.location.href = 'dashboard.html';
             } else if (menuText === 'Project') {
                 window.location.href = 'project.html';
-            } else if (menuText === 'Login') {
-                window.location.href = 'index.html';
+            } else if (menuText === 'Data-Manage') {
+                window.location.href = 'data-management.html';
             } else if (menuText === 'User') {
                 window.location.href = 'user.html';
-            } else if (menuText === 'Register') {
-                window.location.href = 'register.html';
             }
         });
     });
@@ -48,71 +45,105 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 上传数据按钮点击事件
-    const uploadBtn = document.querySelector('.upload-btn');
-    if (uploadBtn) {
-        uploadBtn.addEventListener('click', function() {
-            // 创建一个隐藏的文件输入
-            const fileInput = document.createElement('input');
-            fileInput.type = 'file';
-            fileInput.accept = '.csv,.xlsx,.json';
-            fileInput.multiple = true;
-            fileInput.style.display = 'none';
+    // 数据集复选框选择
+    const checkboxes = document.querySelectorAll('input[name="dataset"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            updateSelectedCount();
+        });
+    });
+
+    // 更新已选数据集数量
+    function updateSelectedCount() {
+        const selectedCount = document.querySelectorAll('input[name="dataset"]:checked').length;
+        const createBtn = document.querySelector('.create-btn');
+        
+        if (selectedCount > 0) {
+            createBtn.textContent = `创建项目 (${selectedCount}个数据集)`;
+        } else {
+            createBtn.textContent = '创建项目';
+        }
+    }
+
+    // 分页功能
+    const pageButtons = document.querySelectorAll('.page-btn:not(:first-child):not(:last-child)');
+    pageButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            pageButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
             
-            // 当选择文件后触发
-            fileInput.addEventListener('change', function(e) {
-                if (this.files.length > 0) {
-                    // 显示选中的文件
-                    let fileNames = '';
-                    for (let i = 0; i < this.files.length; i++) {
-                        fileNames += this.files[i].name + (i < this.files.length - 1 ? ', ' : '');
-                    }
-                    alert(`已选择文件: ${fileNames}`);
-                    
-                    // 这里可以添加上传逻辑
+            // 这里可以添加加载对应页数据的逻辑
+            console.log('切换到页码:', this.textContent);
+        });
+    });
+
+    // 搜索框功能
+    const searchInput = document.querySelector('.dataset-search input');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const datasetItems = document.querySelectorAll('.dataset-item');
+            
+            datasetItems.forEach(item => {
+                const datasetName = item.querySelector('h4').textContent.toLowerCase();
+                if (datasetName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
                 }
             });
-            
-            // 触发文件选择对话框
-            document.body.appendChild(fileInput);
-            fileInput.click();
-            document.body.removeChild(fileInput);
         });
     }
 
-    // 创建项目表单提交
+    // 表单提交事件
     const projectForm = document.querySelector('.project-form');
     if (projectForm) {
         projectForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // 获取表单数据
             const projectName = document.getElementById('projectName').value;
             const projectDescription = document.getElementById('projectDescription').value;
+            const selectedDatasets = Array.from(document.querySelectorAll('input[name="dataset"]:checked')).map(cb => cb.value);
+            const processingMethod = document.querySelector('input[name="process-method"]:checked').nextElementSibling.textContent;
             
-            // 验证表单
+            // 简单的表单验证
             if (!projectName) {
                 alert('请输入项目名称');
                 return;
             }
             
-            // 显示处理中状态
-            const createBtn = document.querySelector('.create-btn');
-            const originalBtnText = createBtn.textContent;
-            createBtn.disabled = true;
-            createBtn.textContent = '创建中...';
+            if (selectedDatasets.length === 0) {
+                alert('请至少选择一个数据集');
+                return;
+            }
             
-            // 模拟创建过程
-            setTimeout(() => {
-                alert(`项目 "${projectName}" 创建成功!`);
-                
-                // 恢复按钮状态
-                createBtn.disabled = false;
-                createBtn.textContent = originalBtnText;
-                
-                // 创建成功后跳转到项目列表页
+            // 打印表单数据 - 实际应用中这里会发送到服务器
+            console.log('项目名称:', projectName);
+            console.log('项目描述:', projectDescription);
+            console.log('选择的数据集:', selectedDatasets);
+            console.log('处理方法:', processingMethod);
+            
+            // 模拟成功创建项目后跳转
+            alert('项目创建成功！');
+            window.location.href = 'project.html';
+        });
+    }
+
+    // 取消按钮点击事件
+    const cancelBtn = document.querySelector('.cancel-btn');
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', function() {
+            if (confirm('确定要取消创建项目吗？所有输入将被丢弃。')) {
                 window.location.href = 'project.html';
-            }, 1500);
+            }
+        });
+    }
+
+    // 上传新数据集按钮点击事件
+    const uploadDataBtn = document.querySelector('.secondary-btn');
+    if (uploadDataBtn) {
+        uploadDataBtn.addEventListener('click', function() {
+            window.location.href = 'data-management.html';
         });
     }
 }); 

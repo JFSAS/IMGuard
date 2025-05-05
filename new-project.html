@@ -11,6 +11,7 @@
     <nav class="top-nav">
         <div class="nav-left">
             <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4bb.svg" alt="logo" class="logo">
+            <span class="logo-text">IMGuard</span>
             <span class="material-icons menu-icon">menu</span>
         </div>
         <div class="nav-right">
@@ -29,37 +30,137 @@
                 </div>
             </div>
             <ul class="nav-menu">
-                <li><i class="material-icons">dashboard</i><span>Dashboard</span></li>
-                <li><i class="material-icons">person</i><span>User</span></li>
-                <li class="active"><i class="material-icons">folder</i><span>Project</span></li>
-                <li><i class="material-icons">login</i><span>Login</span></li>
-                <li><i class="material-icons">person_add</i><span>Register</span></li>
+                <li>
+                    <i class="material-icons">dashboard</i><span>Dashboard</span>
+                  </li>
+                  <li><i class="material-icons">person</i><span>User</span></li>
+                  <li  class="active"><i class="material-icons">folder</i><span>Project</span></li>
+                  <li><i class="material-icons">storage</i><span>Data-Manage</span></li>
             </ul>
         </aside>
 
         <main class="content-area">
             <div class="create-project-container">
-                <h1>Create a new project</h1>
-                <p class="subtitle">Enter your project details below.</p>
+                <h1>创建新项目</h1>
+                <p class="subtitle">输入项目详情并选择数据集</p>
                 
                 <form class="project-form">
                     <div class="form-group">
-                        <input type="text" id="projectName" name="projectName" placeholder="Project Name" required>
+                        <label for="projectName">项目名称</label>
+                        <input type="text" id="projectName" name="projectName" placeholder="输入项目名称" required aria-label="项目名称">
                     </div>
                     
                     <div class="form-group">
-                        <button type="button" class="upload-btn">
-                            <i class="material-icons">arrow_upward</i>
-                            Upload Data
-                        </button>
+                        <label>选择数据集</label>
+                        <div class="dataset-selection">
+                            <div class="dataset-search">
+                                <input type="text" placeholder="搜索数据集..." aria-label="搜索数据集">
+                                <span class="material-icons search-icon">search</span>
+                            </div>
+                            
+                            <div class="dataset-list">
+                                <div class="dataset-item">
+                                    <div class="dataset-info">
+                                        <span class="material-icons dataset-icon">image</span>
+                                        <div class="dataset-details">
+                                            <h4>街景图像数据集</h4>
+                                            <p>5,230条 · 2.4 GB</p>
+                                        </div>
+                                    </div>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" name="dataset" value="street-image" aria-label="选择街景图像数据集">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="dataset-item">
+                                    <div class="dataset-info">
+                                        <span class="material-icons dataset-icon">face</span>
+                                        <div class="dataset-details">
+                                            <h4>人脸识别训练集</h4>
+                                            <p>3,450条 · 1.8 GB</p>
+                                        </div>
+                                    </div>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" name="dataset" value="face-recognition" aria-label="选择人脸识别训练集">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="dataset-item">
+                                    <div class="dataset-info">
+                                        <span class="material-icons dataset-icon">article</span>
+                                        <div class="dataset-details">
+                                            <h4>产品分类文本数据</h4>
+                                            <p>12,450条 · 350 MB</p>
+                                        </div>
+                                    </div>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" name="dataset" value="product-text" aria-label="选择产品分类文本数据">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="dataset-item">
+                                    <div class="dataset-info">
+                                        <span class="material-icons dataset-icon">traffic</span>
+                                        <div class="dataset-details">
+                                            <h4>交通标志识别数据</h4>
+                                            <p>1,840条 · 950 MB</p>
+                                        </div>
+                                    </div>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" name="dataset" value="traffic-signs" aria-label="选择交通标志识别数据">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="dataset-actions">
+                                <button type="button" class="secondary-btn">
+                                    <i class="material-icons">add</i>
+                                    上传新数据集
+                                </button>
+                                <div class="pagination">
+                                    <button type="button" class="page-btn" disabled>
+                                        <span class="material-icons">chevron_left</span>
+                                    </button>
+                                    <button type="button" class="page-btn active">1</button>
+                                    <button type="button" class="page-btn">2</button>
+                                    <button type="button" class="page-btn">
+                                        <span class="material-icons">chevron_right</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <textarea id="projectDescription" name="projectDescription" placeholder="Project Describe" rows="4"></textarea>
+                        <label for="projectDescription">项目描述</label>
+                        <textarea id="projectDescription" name="projectDescription" placeholder="输入项目详细描述" rows="4" aria-label="项目描述"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>数据处理方式</label>
+                        <div class="radio-group">
+                            <label class="radio">
+                                <input type="radio" name="process-method" checked aria-label="选择原始数据处理方式">
+                                <span>原始数据（不进行预处理）</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="process-method" aria-label="选择标准化处理方式">
+                                <span>标准化处理（推荐）</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="process-method" aria-label="选择自定义处理方式">
+                                <span>自定义处理（高级）</span>
+                            </label>
+                        </div>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="submit" class="create-btn">Create</button>
+                        <button type="button" class="cancel-btn">取消</button>
+                        <button type="submit" class="create-btn">创建项目</button>
                     </div>
                 </form>
             </div>

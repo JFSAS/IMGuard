@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = 'project.html';
             } else if (menuText === 'Login') {
                 window.location.href = 'index.html';
-            } else if (menuText === 'User') {
-                window.location.href = 'user.html';
+            } else if (menuText === 'Data-Manage') {
+                window.location.href = 'data-management.html';
             } else if (menuText === 'Register') {
                 window.location.href = 'register.html';
             }

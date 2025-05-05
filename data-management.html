@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMGuard - 数据管理</title>
+    <link rel="stylesheet" href="css/data-management.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="top-nav">
+      <div class="nav-left">
+        <img
+          src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4bb.svg"
+          alt="logo"
+          class="logo"
+        />
+        <span class="logo-text">IMGuard</span>
+        <span class="material-icons menu-icon">menu</span>
+      </div>
+      <div class="nav-right">
+        <span class="material-icons">search</span>
+        <span class="material-icons">notifications</span>
+        <img
+          src="https://randomuser.me/api/portraits/men/32.jpg"
+          alt="avatar"
+          class="avatar"
+        />
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <aside class="sidebar">
+        <div class="user-card">
+          <img
+            src="https://randomuser.me/api/portraits/men/32.jpg"
+            alt="avatar"
+          />
+          <div class="user-info">
+            <div class="user-name">Jaydon Frankie</div>
+          </div>
+        </div>
+        <ul class="nav-menu">
+          <li>
+            <i class="material-icons">dashboard</i><span>Dashboard</span>
+          </li>
+          <li><i class="material-icons">person</i><span>User</span></li>
+          <li><i class="material-icons">folder</i><span>Project</span></li>
+          <li class="active"><i class="material-icons">storage</i><span>Data-Manage</span></li>
+        </ul>
+      </aside>
+
+      <main class="content-area">
+        <div class="content-header">
+          <h2>数据管理</h2>
+          <div class="header-actions">
+            <button class="btn-primary">
+              <span class="material-icons">add</span>上传新数据
+            </button>
+            <button class="btn-secondary">
+              <span class="material-icons">refresh</span>刷新
+            </button>
+          </div>
+        </div>
+
+        <!-- 标签页切换 -->
+        <div class="tabs">
+          <div class="tab active" data-tab="upload">数据上传</div>
+          <div class="tab" data-tab="manage">数据管理</div>
+        </div>
+
+        <!-- 数据上传部分 -->
+        <div class="tab-content" id="upload-content">
+          <div class="upload-section">
+            <div class="upload-card">
+              <div class="upload-header">
+                <h3>上传新数据集</h3>
+                <p class="subtitle">支持CSV、JSON、TXT格式的数据文件</p>
+              </div>
+              <div class="upload-area">
+                <span class="material-icons upload-icon">cloud_upload</span>
+                <p>拖放文件到此处或</p>
+                <button class="btn-upload">选择文件</button>
+                <input type="file" id="file-upload" multiple hidden />
+              </div>
+              <div class="upload-info">
+                <p><strong>注意：</strong>您可以使用我们的<a href="#" class="text-link">离线插件</a>对本地数据进行预处理，以确保格式正确。</p>
+              </div>
+            </div>
+
+            <div class="upload-progress hidden">
+              <h3>正在上传...</h3>
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 45%"></div>
+              </div>
+              <p class="progress-text">45% 已完成</p>
+              <button class="btn-cancel">取消</button>
+            </div>
+
+            <div class="upload-settings">
+              <h3>上传设置</h3>
+              <div class="setting-group">
+                <label>数据集名称</label>
+                <input type="text" placeholder="给数据集一个描述性名称" />
+              </div>
+              <div class="setting-group">
+                <label>数据描述</label>
+                <textarea placeholder="输入数据集的详细描述，包括数据来源、用途等"></textarea>
+              </div>
+              <div class="setting-group">
+                <label>数据标签</label>
+                <div class="tags-input">
+                  <span class="tag">图像<i class="material-icons tag-remove">close</i></span>
+                  <span class="tag">分类<i class="material-icons tag-remove">close</i></span>
+                  <input type="text" placeholder="添加标签..." />
+                </div>
+              </div>
+              <div class="setting-group">
+                <label>数据隐私</label>
+                <div class="radio-group">
+                  <label class="radio">
+                    <input type="radio" name="privacy" checked />
+                    <span>私有（仅自己可见）</span>
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="privacy" />
+                    <span>共享（可选择用户共享）</span>
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="privacy" />
+                    <span>公开（所有用户可见）</span>
+                  </label>
+                </div>
+              </div>
+              <div class="actions">
+                <button class="btn-secondary">取消</button>
+                <button class="btn-primary">保存设置</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 数据管理部分 -->
+        <div class="tab-content hidden" id="manage-content">
+          <div class="filter-section">
+            <div class="search-box">
+              <input type="text" placeholder="搜索数据集..." />
+              <span class="material-icons">search</span>
+            </div>
+            <div class="filter-options">
+              <select>
+                <option>所有数据集</option>
+                <option>图像数据</option>
+                <option>文本数据</option>
+                <option>视频数据</option>
+              </select>
+              <select>
+                <option>全部状态</option>
+                <option>可用</option>
+                <option>不可用</option>
+              </select>
+              <button class="btn-filter">
+                <span class="material-icons">filter_list</span>筛选
+              </button>
+            </div>
+          </div>
+
+          <div class="data-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    <input type="checkbox" id="select-all" />
+                  </th>
+                  <th>数据集名称</th>
+                  <th>创建时间</th>
+                  <th>类型</th>
+                  <th>大小</th>
+                  <th>数据量</th>
+                  <th>标签数</th>
+                  <th>状态</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
+                  <td>街景图像数据集</td>
+                  <td>2023-08-15</td>
+                  <td>图像</td>
+                  <td>2.4 GB</td>
+                  <td>5,230条</td>
+                  <td>12个</td>
+                  <td><span class="status active">可用</span></td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn-icon" title="编辑">
+                        <span class="material-icons">edit</span>
+                      </button>
+                      <button class="btn-icon" title="配置">
+                        <span class="material-icons">settings</span>
+                      </button>
+                      <button class="btn-icon" title="下载">
+                        <span class="material-icons">download</span>
+                      </button>
+                      <button class="btn-icon" title="删除">
+                        <span class="material-icons">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
+                  <td>人脸识别训练集</td>
+                  <td>2023-07-22</td>
+                  <td>图像</td>
+                  <td>1.8 GB</td>
+                  <td>3,450条</td>
+                  <td>8个</td>
+                  <td><span class="status active">可用</span></td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn-icon" title="编辑">
+                        <span class="material-icons">edit</span>
+                      </button>
+                      <button class="btn-icon" title="配置">
+                        <span class="material-icons">settings</span>
+                      </button>
+                      <button class="btn-icon" title="下载">
+                        <span class="material-icons">download</span>
+                      </button>
+                      <button class="btn-icon" title="删除">
+                        <span class="material-icons">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
+                  <td>目标检测测试数据</td>
+                  <td>2023-06-10</td>
+                  <td>图像</td>
+                  <td>1.2 GB</td>
+                  <td>2,130条</td>
+                  <td>15个</td>
+                  <td><span class="status inactive">不可用</span></td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn-icon" title="编辑">
+                        <span class="material-icons">edit</span>
+                      </button>
+                      <button class="btn-icon" title="配置">
+                        <span class="material-icons">settings</span>
+                      </button>
+                      <button class="btn-icon" title="下载">
+                        <span class="material-icons">download</span>
+                      </button>
+                      <button class="btn-icon" title="删除">
+                        <span class="material-icons">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
+                  <td>交通标志识别数据</td>
+                  <td>2023-05-05</td>
+                  <td>图像</td>
+                  <td>950 MB</td>
+                  <td>1,840条</td>
+                  <td>42个</td>
+                  <td><span class="status active">可用</span></td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn-icon" title="编辑">
+                        <span class="material-icons">edit</span>
+                      </button>
+                      <button class="btn-icon" title="配置">
+                        <span class="material-icons">settings</span>
+                      </button>
+                      <button class="btn-icon" title="下载">
+                        <span class="material-icons">download</span>
+                      </button>
+                      <button class="btn-icon" title="删除">
+                        <span class="material-icons">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
+                  <td>产品分类文本数据</td>
+                  <td>2023-04-18</td>
+                  <td>文本</td>
+                  <td>350 MB</td>
+                  <td>12,450条</td>
+                  <td>28个</td>
+                  <td><span class="status active">可用</span></td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn-icon" title="编辑">
+                        <span class="material-icons">edit</span>
+                      </button>
+                      <button class="btn-icon" title="配置">
+                        <span class="material-icons">settings</span>
+                      </button>
+                      <button class="btn-icon" title="下载">
+                        <span class="material-icons">download</span>
+                      </button>
+                      <button class="btn-icon" title="删除">
+                        <span class="material-icons">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <button class="page-btn" disabled>
+              <span class="material-icons">chevron_left</span>
+            </button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <span class="page-dots">...</span>
+            <button class="page-btn">8</button>
+            <button class="page-btn">
+              <span class="material-icons">chevron_right</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 数据详情模态框 -->
+        <div class="modal" id="data-details-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>数据集详情</h3>
+              <span class="material-icons close-modal">close</span>
+            </div>
+            <div class="modal-body">
+              <div class="details-tabs">
+                <div class="details-tab active">基本信息</div>
+                <div class="details-tab">标签管理</div>
+                <div class="details-tab">使用权限</div>
+                <div class="details-tab">操作记录</div>
+              </div>
+              <div class="details-content">
+                <div class="info-group">
+                  <label>数据集名称</label>
+                  <input type="text" value="街景图像数据集" />
+                </div>
+                <div class="info-group">
+                  <label>创建时间</label>
+                  <input type="text" value="2023-08-15" disabled />
+                </div>
+                <div class="info-group">
+                  <label>数据类型</label>
+                  <select>
+                    <option selected>图像</option>
+                    <option>文本</option>
+                    <option>视频</option>
+                    <option>音频</option>
+                  </select>
+                </div>
+                <div class="info-group">
+                  <label>描述</label>
+                  <textarea>这是一个包含城市街景图像的数据集，可用于目标检测、分割等任务。图像分辨率为1920x1080，覆盖了白天、夜晚和不同天气条件下的场景。</textarea>
+                </div>
+                <div class="info-group">
+                  <label>数据可用状态</label>
+                  <div class="switch-container">
+                    <label class="switch">
+                      <input type="checkbox" checked />
+                      <span class="slider"></span>
+                    </label>
+                    <span class="switch-text">已启用</span>
+                  </div>
+                </div>
+                <div class="info-group">
+                  <label>数据标签</label>
+                  <div class="tags-display">
+                    <span class="tag">街景<i class="material-icons tag-remove">close</i></span>
+                    <span class="tag">城市<i class="material-icons tag-remove">close</i></span>
+                    <span class="tag">交通<i class="material-icons tag-remove">close</i></span>
+                    <span class="tag">高清<i class="material-icons tag-remove">close</i></span>
+                    <span class="tag">标注<i class="material-icons tag-remove">close</i></span>
+                    <span class="tag-add">
+                      <i class="material-icons">add</i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn-secondary">取消</button>
+              <button class="btn-primary">保存更改</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/data-management.js"></script>
+  </body>
+</html> 

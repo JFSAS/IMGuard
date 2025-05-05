@@ -257,6 +257,11 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
+    margin-bottom: 24px;
+}
+
+.dashboard-grid.second-row {
+    grid-template-columns: 1fr;
 }
 
 .card {
@@ -488,4 +493,137 @@ body {
     .card.wide {
         grid-column: auto;
     }
+    
+    .activity-item {
+        gap: 12px;
+    }
+    
+    .activity-desc {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .overview-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .activity-icon {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .activity-icon .material-icons {
+        font-size: 18px;
+    }
+    
+    .activity-title {
+        font-size: 14px;
+    }
+    
+    .activity-desc {
+        font-size: 12px;
+    }
+}
+
+/* 活动卡片样式 */
+.activities-card {
+    min-height: 400px;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.activity-item {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(25, 118, 210, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.activity-icon .material-icons {
+    color: var(--primary-color);
+    font-size: 20px;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-title {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.activity-desc {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.activity-time {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+/* 为不同活动类型设置不同的图标颜色 */
+.activity-item:nth-child(1) .activity-icon {
+    background-color: rgba(25, 118, 210, 0.1);
+}
+
+.activity-item:nth-child(1) .activity-icon .material-icons {
+    color: var(--primary-color);
+}
+
+.activity-item:nth-child(2) .activity-icon {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+.activity-item:nth-child(2) .activity-icon .material-icons {
+    color: #ffc107;
+}
+
+.activity-item:nth-child(3) .activity-icon {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.activity-item:nth-child(3) .activity-icon .material-icons {
+    color: var(--success);
+}
+
+.activity-item:nth-child(4) .activity-icon {
+    background-color: rgba(3, 169, 244, 0.1);
+}
+
+.activity-item:nth-child(4) .activity-icon .material-icons {
+    color: #03a9f4;
+}
+
+.activity-item:nth-child(5) .activity-icon {
+    background-color: rgba(211, 47, 47, 0.1);
+}
+
+.activity-item:nth-child(5) .activity-icon .material-icons {
+    color: var(--error);
 } 

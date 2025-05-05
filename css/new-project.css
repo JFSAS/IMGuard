@@ -8,6 +8,7 @@
     --surface: #ffffff;
     --error: #d32f2f;
     --success: #4caf50;
+    --warning: #ffc107;
     --sidebar-width: 240px;
 }
 
@@ -48,6 +49,14 @@ body {
 .logo {
     width: 24px;
     height: 24px;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-left: 8px;
+    margin-right: 16px;
 }
 
 .menu-icon {
@@ -92,7 +101,7 @@ body {
     top: 64px;
 }
 
-.sidebar .user-card {
+.user-card {
     padding: 16px 24px;
     display: flex;
     align-items: center;
@@ -103,7 +112,7 @@ body {
     background-color: #f9f9f9;
 }
 
-.sidebar .user-card img {
+.user-card img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -148,36 +157,29 @@ body {
     flex: 1;
     padding: 24px;
     margin-left: var(--sidebar-width);
-    display: flex;
-    flex-direction: column;
 }
 
-/* 创建项目容器 */
+/* 项目创建容器 */
 .create-project-container {
-    flex: 1;
-    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px;
     background-color: var(--surface);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
-.create-project-container h1 {
+h1 {
     font-size: 24px;
+    font-weight: 500;
     color: var(--text-primary);
     margin-bottom: 8px;
-    font-weight: 500;
-    text-align: center;
 }
 
 .subtitle {
+    font-size: 14px;
     color: var(--text-secondary);
     margin-bottom: 32px;
-    font-size: 14px;
-    text-align: center;
 }
 
 /* 表单样式 */
@@ -185,82 +187,284 @@ body {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    max-width: 600px;
-    width: 100%;
-    margin: 0 auto;
 }
 
 .form-group {
-    width: 100%;
-    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+.form-group label {
     font-size: 14px;
+    font-weight: 500;
     color: var(--text-primary);
+}
+
+input[type="text"], textarea {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
     transition: border-color 0.3s;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+input[type="text"]:focus, textarea:focus {
+    border-color: var(--primary-color);
     outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* 数据集选择区域 */
+.dataset-selection {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.dataset-search {
+    position: relative;
+    padding: 16px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.dataset-search input {
+    width: 100%;
+    padding: 10px 40px 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.dataset-list {
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.dataset-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.3s;
+}
+
+.dataset-item:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.dataset-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.dataset-icon {
+    font-size: 24px;
+    color: var(--primary-color);
+    background-color: rgba(25, 118, 210, 0.08);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.dataset-details h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.dataset-details p {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* 复选框样式 */
+.checkbox-container {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #e0e0e0;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
 }
 
-.upload-btn {
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* 数据集操作区域 */
+.dataset-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-top: 1px solid #e0e0e0;
+    background-color: #fafafa;
+}
+
+/* 单选按钮组 */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.radio {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.radio input[type="radio"] {
+    margin: 0;
+}
+
+.radio span {
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+/* 分页样式 */
+.pagination {
+    display: flex;
+    gap: 8px;
+}
+
+.page-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: var(--surface);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.page-btn:hover:not(:disabled):not(.active) {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* 按钮样式 */
+.create-btn, .secondary-btn, .cancel-btn {
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 12px 16px;
-    width: 100%;
-    background-color: rgba(25, 118, 210, 0.08);
-    border: 1px dashed var(--primary-color);
-    border-radius: 8px;
-    color: var(--primary-color);
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.upload-btn:hover {
-    background-color: rgba(25, 118, 210, 0.12);
-}
-
-.upload-btn i {
-    font-size: 20px;
-}
-
-.form-actions {
-    display: flex;
-    justify-content: center;
-    margin-top: 32px;
+    transition: all 0.3s;
 }
 
 .create-btn {
     background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 8px;
-    padding: 12px 40px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .create-btn:hover {
     background-color: var(--primary-dark);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.secondary-btn:hover {
+    background-color: rgba(25, 118, 210, 0.05);
+}
+
+.cancel-btn {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid #e0e0e0;
+}
+
+.cancel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 16px;
 }
 
 /* 响应式设计 */
@@ -293,21 +497,26 @@ body {
 
 @media (max-width: 768px) {
     .create-project-container {
-        padding: 24px 16px;
-        border-radius: 0;
-        box-shadow: none;
+        padding: 16px;
     }
     
-    .project-form {
-        max-width: 100%;
+    .dataset-actions {
+        flex-direction: column;
+        gap: 16px;
     }
     
-    .create-project-container h1 {
-        font-size: 20px;
+    .pagination {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .form-actions {
+        flex-direction: column;
     }
     
-    .subtitle {
-        font-size: 12px;
-        margin-bottom: 24px;
+    .create-btn, .cancel-btn {
+        width: 100%;
     }
 } 
