@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMGuard - 注册</title>
+    <link rel="stylesheet" href="css/register.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-card">
+            <h2>Get started !</h2>
+            <p class="subtitle">Your Image Guard</p>
+            
+            <div class="input-row">
+                <div class="input-field half">
+                    <input type="text" id="firstname" placeholder="First name">
+                </div>
+                <div class="input-field half">
+                    <input type="text" id="lastname" placeholder="Last name">
+                </div>
+            </div>
+            
+            <div class="input-field">
+                <input type="email" id="email" placeholder="Email address">
+            </div>
+            
+            <div class="input-field">
+                <input type="password" id="password" placeholder="Password">
+                <i class="material-icons toggle-password">visibility_off</i>
+            </div>
+            
+            <button class="register-button" onclick="register()">Register</button>
+            
+            <div class="terms">
+                <p>By registering, I agree to IMGuard <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/register.js"></script>
+</body>
+</html> 

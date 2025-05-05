@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMGuard - 控制台</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <nav class="top-nav">
+      <div class="nav-left">
+        <img
+          src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4bb.svg"
+          alt="logo"
+          class="logo"
+        />
+        <span class="logo-text">IMGuard</span>
+        <span class="material-icons menu-icon">menu</span>
+      </div>
+      <div class="nav-right">
+        <span class="material-icons">search</span>
+        <span class="material-icons">notifications</span>
+        <img
+          src="https://randomuser.me/api/portraits/men/32.jpg"
+          alt="avatar"
+          class="avatar"
+        />
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <aside class="sidebar">
+        <div class="user-card">
+          <img
+            src="https://randomuser.me/api/portraits/men/32.jpg"
+            alt="avatar"
+          />
+          <div class="user-info">
+            <div class="user-name">Jaydon Frankie</div>
+          </div>
+        </div>
+        <ul class="nav-menu">
+          <li class="active">
+            <i class="material-icons">dashboard</i><span>Dashboard</span>
+          </li>
+          <li><i class="material-icons">person</i><span>User</span></li>
+          <li><i class="material-icons">folder</i><span>Project</span></li>
+          <li><i class="material-icons">login</i><span>Login</span></li>
+          <li><i class="material-icons">person_add</i><span>Register</span></li>
+        </ul>
+      </aside>
+
+      <main class="content-area">
+        <div class="content-header">
+          <h2>Hi, Welcome back</h2>
+          <button class="btn-primary">
+            <span class="material-icons">refresh</span>刷新
+          </button>
+        </div>
+
+        <!-- 概览卡片 -->
+        <div class="overview-cards">
+          <div class="overview-card blue">
+            <div class="icon-circle">
+              <span class="material-icons">android</span>
+            </div>
+            <div class="card-number">5</div>
+            <div class="card-label">Total Users</div>
+          </div>
+          <div class="overview-card light-blue">
+            <div class="icon-circle">
+              <span class="material-icons">apple</span>
+            </div>
+            <div class="card-number">6</div>
+            <div class="card-label">Total Projects</div>
+          </div>
+          <div class="overview-card yellow">
+            <div class="icon-circle">
+              <span class="material-icons">apps</span>
+            </div>
+            <div class="card-number">2</div>
+            <div class="card-label">Finished Projects</div>
+          </div>
+          <div class="overview-card red">
+            <div class="icon-circle">
+              <span class="material-icons">bug_report</span>
+            </div>
+            <div class="card-number">1</div>
+            <div class="card-label">Training Projects</div>
+          </div>
+        </div>
+
+        <!-- 图表和任务区域 -->
+        <div class="dashboard-grid">
+          <!-- 服务器负载图表 -->
+          <div class="card chart-card">
+            <div class="card-header">
+              <div>
+                <h3>Server Payload</h3>
+                <p class="subtitle">(+23%) than last time login</p>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <span class="legend-color blue"></span>
+                  <span>Log Server</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color yellow"></span>
+                  <span>Server B</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color light-blue"></span>
+                  <span>Server A</span>
+                </div>
+              </div>
+              <div class="chart-container">
+                <canvas id="serverChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- 任务更新 -->
+          <div class="card tasks-card">
+            <div class="card-header">
+              <h3>Tasks Update</h3>
+            </div>
+            <div class="card-content">
+              <div class="task-list">
+                <div class="task-item">
+                  <img
+                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=facearea&w=36&h=36"
+                    alt="Task"
+                    class="task-img"
+                  />
+                  <div class="task-info">
+                    <span class="task-title">语义分割</span>
+                  </div>
+                  <span class="task-time">about 18 hours ago</span>
+                </div>
+                <div class="task-item">
+                  <img
+                    src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=facearea&w=36&h=36"
+                    alt="Task"
+                    class="task-img"
+                  />
+                  <div class="task-info">
+                    <span class="task-title">人脸识别</span>
+                  </div>
+                  <span class="task-time">about 9 hours ago</span>
+                </div>
+                <div class="task-item">
+                  <img
+                    src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=facearea&w=36&h=36"
+                    alt="Task"
+                    class="task-img"
+                  />
+                  <div class="task-info">
+                    <span class="task-title">图像分类</span>
+                  </div>
+                  <span class="task-time">about 9 hours ago</span>
+                </div>
+                <div class="task-item">
+                  <img
+                    src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=facearea&w=36&h=36"
+                    alt="Task"
+                    class="task-img"
+                  />
+
+                  <div class="task-info">
+                    <span class="task-title">目标检测</span>
+                  </div>
+                  <span class="task-time">about 19 hours ago</span>
+                </div>
+                <div class="task-item">
+                  <img
+                    src="https://images.unsplash.com/photo-1553481187-be93c21490a9?auto=format&fit=facearea&w=36&h=36"
+                    alt="Task"
+                    class="task-img"
+                  />
+                  <div class="task-info">
+                    <span class="task-title">图像检索</span>
+                  </div>
+                  <span class="task-time">about 19 hours ago</span>
+                </div>
+              </div>
+              <div class="view-all">
+                <a href="#"
+                  >View All <span class="material-icons">arrow_forward</span></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/servarchart.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

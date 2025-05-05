@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMGuard - 创建项目</title>
+    <link rel="stylesheet" href="css/new-project.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4bb.svg" alt="logo" class="logo">
+            <span class="material-icons menu-icon">menu</span>
+        </div>
+        <div class="nav-right">
+            <span class="material-icons">search</span>
+            <span class="material-icons">notifications</span>
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar" class="avatar">
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <div class="user-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar">
+                <div class="user-info">
+                    <div class="user-name">Jaydon Frankie</div>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><i class="material-icons">dashboard</i><span>Dashboard</span></li>
+                <li><i class="material-icons">person</i><span>User</span></li>
+                <li class="active"><i class="material-icons">folder</i><span>Project</span></li>
+                <li><i class="material-icons">login</i><span>Login</span></li>
+                <li><i class="material-icons">person_add</i><span>Register</span></li>
+            </ul>
+        </aside>
+
+        <main class="content-area">
+            <div class="create-project-container">
+                <h1>Create a new project</h1>
+                <p class="subtitle">Enter your project details below.</p>
+                
+                <form class="project-form">
+                    <div class="form-group">
+                        <input type="text" id="projectName" name="projectName" placeholder="Project Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="button" class="upload-btn">
+                            <i class="material-icons">arrow_upward</i>
+                            Upload Data
+                        </button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="projectDescription" name="projectDescription" placeholder="Project Describe" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="create-btn">Create</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/new-project.js"></script>
+</body>
+</html> 

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMGuard - 项目管理</title>
+    <link rel="stylesheet" href="css/project.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4bb.svg" alt="logo" class="logo">
+            <span class="material-icons menu-icon">menu</span>
+        </div>
+        <div class="nav-right">
+            <span class="material-icons">search</span>
+            <span class="material-icons">notifications</span>
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar" class="avatar">
+        </div>
+    </nav>
+    <div class="main-content">
+        <aside class="sidebar">
+            <div class="user-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar">
+                <div class="user-info">
+                    <div class="user-name">Jaydon Frankie</div>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><i class="material-icons">dashboard</i><span>Dashboard</span></li>
+                <li><i class="material-icons">person</i><span>User</span></li>
+                <li class="active"><i class="material-icons">folder</i><span>Project</span></li>
+                <li><i class="material-icons">login</i><span>Login</span></li>
+                <li><i class="material-icons">person_add</i><span>Register</span></li>
+            </ul>
+        </aside>
+        <main class="content-area">
+            <div class="content-header">
+                <h2>Project</h2>
+                <button class="btn-primary"><span class="material-icons">add</span>New Project</button>
+            </div>
+            <div class="project-card">
+                <div class="project-toolbar">
+                    <div class="search-box">
+                        <span class="material-icons">search</span>
+                        <input type="text" placeholder="Search Project...">
+                    </div>
+                    <button class="btn-secondary">Latest <span class="material-icons">expand_more</span></button>
+                </div>
+                <table class="project-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" aria-label="全选"></th>
+                            <th>Project Name</th>
+                            <th>creator</th>
+                            <th>Completeness</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" aria-label="选择目标检测"></td>
+                            <td><img class="project-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=facearea&w=32&h=32" alt="目标检测"/>目标检测</td>
+                            <td>Terry Mueller</td>
+                            <td>100</td>
+                            <td><span class="status success">已完成</span></td>
+                            <td><span class="material-icons">more_vert</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" aria-label="选择语义分割"></td>
+                            <td><img class="project-img" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=facearea&w=32&h=32" alt="语义分割"/>语义分割</td>
+                            <td>Harriet Kohler</td>
+                            <td>95</td>
+                            <td><span class="status error">训练中</span></td>
+                            <td><span class="material-icons">more_vert</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" aria-label="选择人脸识别"></td>
+                            <td><img class="project-img" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=facearea&w=32&h=32" alt="人脸识别"/>人脸识别</td>
+                            <td>Mario Monahan</td>
+                            <td>0</td>
+                            <td><span class="status success">准备中</span></td>
+                            <td><span class="material-icons">more_vert</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" aria-label="选择图片分类"></td>
+                            <td><img class="project-img" src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=facearea&w=32&h=32" alt="图片分类"/>图片分类</td>
+                            <td>Beth Pacocha</td>
+                            <td>0</td>
+                            <td><span class="status success">准备中</span></td>
+                            <td><span class="material-icons">more_vert</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <span>Rows per page:</span>
+                    <select aria-label="每页行数">
+                        <option>5</option>
+                        <option>10</option>
+                        <option>20</option>
+                    </select>
+                    <span>1-4 of 4</span>
+                    <button class="icon-btn" disabled><span class="material-icons">chevron_left</span></button>
+                    <button class="icon-btn"><span class="material-icons">chevron_right</span></button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/project.js"></script>
+</body>
+</html> 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMGuard - 登录</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h1>IMGuard</h1>
+            <div class="input-group">
+                <div class="input-field">
+                    <i class="material-icons">person</i>
+                    <input type="text" id="username" placeholder="用户名">
+                </div>
+                <div class="input-field">
+                    <i class="material-icons">lock</i>
+                    <input type="password" id="password" placeholder="密码">
+                </div>
+            </div>
+            <div class="options">
+                <label class="checkbox">
+                    <input type="checkbox">
+                    <span>记住我</span>
+                </label>
+                <a href="#" class="forgot-password">忘记密码？</a>
+            </div>
+            <button class="login-button" onclick="login()">登录</button>
+            <div class="register-link">
+                还没有账号？<a href="register.html">立即注册</a>
+            </div>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html> 
