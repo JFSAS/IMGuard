@@ -59,15 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.backgroundColor = '';
         });
         
-        // 点击更多按钮显示菜单
-        const moreButton = row.querySelector('.material-icons');
-        if (moreButton) {
-            moreButton.addEventListener('click', function(e) {
-                e.stopPropagation();
-                alert('显示项目操作菜单');
-                // 这里可以实现一个下拉菜单
-            });
-        }
     });
 
     // 新建项目按钮点击事件

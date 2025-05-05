@@ -11,6 +11,7 @@
     <nav class="top-nav">
         <div class="nav-left">
             <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4bb.svg" alt="logo" class="logo">
+            <span class="logo-text">IMGuard</span>
             <span class="material-icons menu-icon">menu</span>
         </div>
         <div class="nav-right">
@@ -26,122 +27,435 @@
                 <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar">
                 <div class="user-info">
                     <div class="user-name">Jaydon Frankie</div>
+                    <div class="user-role">管理员</div>
                 </div>
             </div>
             <ul class="nav-menu">
                 <li>
                     <i class="material-icons">dashboard</i><span>Dashboard</span>
-                  </li>
-                  <li class="active"><i class="material-icons">person</i><span>User</span></li>
-                  <li  ><i class="material-icons">folder</i><span>Project</span></li>
-                  <li><i class="material-icons">storage</i><span>Data-Manage</span></li>
+                </li>
+                <li class="active"><i class="material-icons">person</i><span>User</span></li>
+                <li><i class="material-icons">folder</i><span>Project</span></li>
+                <li><i class="material-icons">storage</i><span>Data-Manage</span></li>
             </ul>
         </aside>
 
         <main class="content-area">
             <div class="content-header">
-                <h2>User</h2>
-                <button class="btn-primary"><span class="material-icons">add</span>New User</button>
-            </div>
-            <div class="user-card">
-                <div class="user-toolbar">
-                    <div class="search-box">
-                        <span class="material-icons">search</span>
-                        <input type="text" placeholder="Search user...">
-                    </div>
-                    <button class="btn-filter">
-                        <span class="material-icons">filter_list</span>
-                    </button>
+                <h2>用户管理</h2>
+                <div class="header-actions">
+                    <button class="btn-secondary"><span class="material-icons">group_add</span>分配项目</button>
+                    <button class="btn-primary"><span class="material-icons">add</span>新建用户</button>
                 </div>
-                <table class="user-table">
-                    <thead>
-                        <tr>
-                            <th><input type="checkbox" aria-label="全选"></th>
-                            <th>Name <span class="material-icons">arrow_upward</span></th>
-                            <th>Role</th>
-                            <th>Verified</th>
-                            <th>Status</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="checkbox" aria-label="选择用户"></td>
-                            <td>
-                                <div class="user-info-cell">
-                                    <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Luis Crooks" class="user-avatar">
-                                    <span>Luis Crooks</span>
-                                </div>
-                            </td>
-                            <td>editor</td>
-                            <td>Yes</td>
-                            <td><span class="status success">Active</span></td>
-                            <td><span class="material-icons">more_vert</span></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" aria-label="选择用户"></td>
-                            <td>
-                                <div class="user-info-cell">
-                                    <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Luz Hagenes" class="user-avatar">
-                                    <span>Luz Hagenes</span>
-                                </div>
-                            </td>
-                            <td>editor</td>
-                            <td>No</td>
-                            <td><span class="status error">Banned</span></td>
-                            <td><span class="material-icons">more_vert</span></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" aria-label="选择用户"></td>
-                            <td>
-                                <div class="user-info-cell">
-                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mandy Kulas" class="user-avatar">
-                                    <span>Mandy Kulas</span>
-                                </div>
-                            </td>
-                            <td>editor</td>
-                            <td>Yes</td>
-                            <td><span class="status success">Active</span></td>
-                            <td><span class="material-icons">more_vert</span></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" aria-label="选择用户"></td>
-                            <td>
-                                <div class="user-info-cell">
-                                    <img src="https://randomuser.me/api/portraits/men/71.jpg" alt="Mr. Diane Littel" class="user-avatar">
-                                    <span>Mr. Diane Littel</span>
-                                </div>
-                            </td>
-                            <td>editor</td>
-                            <td>Yes</td>
-                            <td><span class="status success">Active</span></td>
-                            <td><span class="material-icons">more_vert</span></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" aria-label="选择用户"></td>
-                            <td>
-                                <div class="user-info-cell">
-                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Mr. Guillermo Labadie" class="user-avatar">
-                                    <span>Mr. Guillermo Labadie</span>
-                                </div>
-                            </td>
-                            <td>editor</td>
-                            <td>Yes</td>
-                            <td><span class="status success">Active</span></td>
-                            <td><span class="material-icons">more_vert</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="pagination">
-                    <span>Rows per page:</span>
-                    <select aria-label="每页行数">
-                        <option>5</option>
-                        <option>10</option>
-                        <option>20</option>
+            </div>
+
+            <!-- 用户筛选和管理标签页 -->
+            <div class="user-tabs">
+                <div class="tab active" data-tab="all-users">所有用户</div>
+                <div class="tab" data-tab="by-project">按项目查看</div>
+                <div class="tab" data-tab="admin">管理员</div>
+            </div>
+
+            <!-- 所有用户标签内容 -->
+            <div class="tab-content" id="all-users-content">
+                <div class="user-card">
+                    <div class="user-toolbar">
+                        <div class="search-box">
+                            <span class="material-icons">search</span>
+                            <input type="text" placeholder="搜索用户..." aria-label="搜索用户">
+                        </div>
+                        <div class="filter-group">
+                            <select class="filter-select" aria-label="筛选用户角色">
+                                <option value="all">所有角色</option>
+                                <option value="admin">管理员</option>
+                                <option value="editor">编辑者</option>
+                                <option value="viewer">查看者</option>
+                            </select>
+                            <select class="filter-select" aria-label="筛选用户状态">
+                                <option value="all">所有状态</option>
+                                <option value="active">活跃</option>
+                                <option value="inactive">未激活</option>
+                                <option value="banned">已禁用</option>
+                            </select>
+                            <button class="btn-filter">
+                                <span class="material-icons">filter_list</span>
+                            </button>
+                        </div>
+                    </div>
+                    <table class="user-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" aria-label="全选"></th>
+                                <th>姓名 <span class="material-icons">arrow_upward</span></th>
+                                <th>角色</th>
+                                <th>邮箱</th>
+                                <th>项目</th>
+                                <th>状态</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" aria-label="选择用户"></td>
+                                <td>
+                                    <div class="user-info-cell">
+                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Jaydon Frankie" class="user-avatar">
+                                        <span>Jaydon Frankie</span>
+                                    </div>
+                                </td>
+                                <td><span class="role admin">管理员</span></td>
+                                <td>luis.crooks@example.com</td>
+                                <td>所有项目</td>
+                                <td><span class="status success">活跃</span></td>
+                                <td><span class="material-icons action-menu">more_vert</span></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" aria-label="选择用户"></td>
+                                <td>
+                                    <div class="user-info-cell">
+                                        <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Luz Hagenes" class="user-avatar">
+                                        <span>Luz Hagenes</span>
+                                    </div>
+                                </td>
+                                <td><span class="role editor">编辑者</span></td>
+                                <td>luz.hagenes@example.com</td>
+                                <td>目标检测, 图片分类</td>
+                                <td><span class="status error">已禁用</span></td>
+                                <td><span class="material-icons action-menu">more_vert</span></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" aria-label="选择用户"></td>
+                                <td>
+                                    <div class="user-info-cell">
+                                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mandy Kulas" class="user-avatar">
+                                        <span>Mandy Kulas</span>
+                                    </div>
+                                </td>
+                                <td><span class="role editor">编辑者</span></td>
+                                <td>mandy.kulas@example.com</td>
+                                <td>语义分割</td>
+                                <td><span class="status success">活跃</span></td>
+                                <td><span class="material-icons action-menu">more_vert</span></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" aria-label="选择用户"></td>
+                                <td>
+                                    <div class="user-info-cell">
+                                        <img src="https://randomuser.me/api/portraits/men/71.jpg" alt="Mr. Diane Littel" class="user-avatar">
+                                        <span>Mr. Diane Littel</span>
+                                    </div>
+                                </td>
+                                <td><span class="role viewer">查看者</span></td>
+                                <td>diane.littel@example.com</td>
+                                <td>人脸识别</td>
+                                <td><span class="status success">活跃</span></td>
+                                <td><span class="material-icons action-menu">more_vert</span></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" aria-label="选择用户"></td>
+                                <td>
+                                    <div class="user-info-cell">
+                                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Mr. Guillermo Labadie" class="user-avatar">
+                                        <span>Mr. Guillermo Labadie</span>
+                                    </div>
+                                </td>
+                                <td><span class="role viewer">查看者</span></td>
+                                <td>guillermo.labadie@example.com</td>
+                                <td>目标检测</td>
+                                <td><span class="status warning">未激活</span></td>
+                                <td><span class="material-icons action-menu">more_vert</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination">
+                        <span>每页行数:</span>
+                        <select aria-label="每页行数">
+                            <option>5</option>
+                            <option>10</option>
+                            <option>20</option>
+                        </select>
+                        <span>1-5 of 24</span>
+                        <button class="icon-btn"><span class="material-icons">chevron_left</span></button>
+                        <button class="icon-btn"><span class="material-icons">chevron_right</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 按项目查看标签内容 -->
+            <div class="tab-content hidden" id="by-project-content">
+                <div class="project-filter">
+                    <label for="project-select">选择项目:</label>
+                    <select id="project-select" aria-label="选择项目">
+                        <option value="">选择一个项目</option>
+                        <option value="target-detection">目标检测</option>
+                        <option value="semantic-segmentation">语义分割</option>
+                        <option value="face-recognition">人脸识别</option>
+                        <option value="image-classification">图片分类</option>
                     </select>
-                    <span>16-20 of 24</span>
-                    <button class="icon-btn"><span class="material-icons">chevron_left</span></button>
-                    <button class="icon-btn"><span class="material-icons">chevron_right</span></button>
+                </div>
+
+                <div id="project-users-container" class="hidden">
+                    <div class="project-info">
+                        <h3>项目: <span id="project-name">目标检测</span></h3>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">3</span>
+                                <span class="stat-label">团队成员</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">1</span>
+                                <span class="stat-label">管理员</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">2</span>
+                                <span class="stat-label">编辑者</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user-card">
+                        <div class="user-toolbar">
+                            <h4>项目成员</h4>
+                            <button class="btn-secondary btn-sm"><span class="material-icons">person_add</span>添加成员</button>
+                        </div>
+                        <table class="user-table">
+                            <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>角色</th>
+                                    <th>添加时间</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="project-users">
+                                <tr>
+                                    <td>
+                                        <div class="user-info-cell">
+                                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Jaydon Frankie" class="user-avatar">
+                                            <span>Jaydon Frankie</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role admin">项目管理员</span></td>
+                                    <td>2023-05-12</td>
+                                    <td><span class="status success">活跃</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="修改角色"><span class="material-icons">edit</span></button>
+                                            <button class="btn-icon" title="移除项目"><span class="material-icons">person_remove</span></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-info-cell">
+                                            <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Luz Hagenes" class="user-avatar">
+                                            <span>Luz Hagenes</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role editor">编辑者</span></td>
+                                    <td>2023-06-15</td>
+                                    <td><span class="status error">已禁用</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="修改角色"><span class="material-icons">edit</span></button>
+                                            <button class="btn-icon" title="移除项目"><span class="material-icons">person_remove</span></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-info-cell">
+                                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Mr. Guillermo Labadie" class="user-avatar">
+                                            <span>Mr. Guillermo Labadie</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role viewer">查看者</span></td>
+                                    <td>2023-07-22</td>
+                                    <td><span class="status warning">未激活</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="修改角色"><span class="material-icons">edit</span></button>
+                                            <button class="btn-icon" title="移除项目"><span class="material-icons">person_remove</span></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="project-empty" class="empty-state">
+                    <span class="material-icons empty-icon">groups</span>
+                    <h3>请选择一个项目</h3>
+                    <p>在上方下拉菜单中选择一个项目，查看相关的团队成员</p>
+                </div>
+            </div>
+
+            <!-- 管理员标签内容 -->
+            <div class="tab-content hidden" id="admin-content">
+                <div class="user-card">
+                    <div class="user-toolbar">
+                        <h4>系统管理员</h4>
+                        <button class="btn-secondary btn-sm"><span class="material-icons">admin_panel_settings</span>添加管理员</button>
+                    </div>
+                    <table class="user-table">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>邮箱</th>
+                                <th>最后登录</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="user-info-cell">
+                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Jaydon Frankie" class="user-avatar">
+                                        <span>Jaydon Frankie</span>
+                                    </div>
+                                </td>
+                                <td>luis.crooks@example.com</td>
+                                <td>2023-08-24 14:32</td>
+                                <td><span class="status success">活跃</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" title="编辑"><span class="material-icons">edit</span></button>
+                                        <button class="btn-icon danger" title="移除管理员权限"><span class="material-icons">remove_moderator</span></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-info-cell">
+                                        <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Sarah Johnson" class="user-avatar">
+                                        <span>Sarah Johnson</span>
+                                    </div>
+                                </td>
+                                <td>sarah.johnson@example.com</td>
+                                <td>2023-08-23 09:15</td>
+                                <td><span class="status success">活跃</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" title="编辑"><span class="material-icons">edit</span></button>
+                                        <button class="btn-icon danger" title="移除管理员权限"><span class="material-icons">remove_moderator</span></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 用户角色修改模态框 -->
+            <div class="modal" id="role-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>修改用户角色</h3>
+                        <span class="material-icons close-modal">close</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-user-info">
+                            <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="User" class="modal-user-avatar">
+                            <div>
+                                <h4>Jaydon Frankie</h4>
+                                <p>luis.crooks@example.com</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="role-select">选择角色:</label>
+                            <select id="role-select" aria-label="选择角色">
+                                <option value="admin">管理员</option>
+                                <option value="editor">编辑者</option>
+                                <option value="viewer">查看者</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-permissions">项目权限:</label>
+                            <div class="permissions-list">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" checked> 目标检测
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox"> 语义分割
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox"> 人脸识别
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox"> 图片分类
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn-secondary close-btn">取消</button>
+                        <button class="btn-primary save-btn">保存</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 新建用户模态框 -->
+            <div class="modal" id="new-user-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>新建用户</h3>
+                        <span class="material-icons close-modal">close</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="user-name">姓名:</label>
+                            <input type="text" id="user-name" placeholder="输入用户姓名" aria-label="用户姓名">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-email">邮箱:</label>
+                            <input type="email" id="user-email" placeholder="输入用户邮箱" aria-label="用户邮箱">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-role">角色:</label>
+                            <select id="user-role" aria-label="用户角色">
+                                <option value="admin">管理员</option>
+                                <option value="editor" selected>编辑者</option>
+                                <option value="viewer">查看者</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>分配项目:</label>
+                            <div class="permissions-list">
+                                <label class="checkbox-container">
+                                    <input type="checkbox"> 目标检测
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox"> 语义分割
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox"> 人脸识别
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox"> 图片分类
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="send-invite">
+                                <input type="checkbox" id="send-invite" checked> 向用户发送邀请邮件
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn-secondary close-btn">取消</button>
+                        <button class="btn-primary save-btn">创建</button>
+                    </div>
                 </div>
             </div>
         </main>

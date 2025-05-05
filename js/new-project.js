@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 模拟成功创建项目后跳转
             alert('项目创建成功！');
-            window.location.href = 'project.html';
+            window.location.href = 'project2.html';
         });
     }
 

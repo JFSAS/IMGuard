@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMGuard - 项目详情</title>
+    <link rel="stylesheet" href="css/project-detail.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4bb.svg" alt="logo" class="logo">
+            <span class="logo-text">IMGuard</span>
+            <span class="material-icons menu-icon">menu</span>
+        </div>
+        <div class="nav-right">
+            <span class="material-icons">search</span>
+            <span class="material-icons">notifications</span>
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar" class="avatar">
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <div class="user-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar">
+                <div class="user-info">
+                    <div class="user-name">Jaydon Frankie</div>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li>
+                    <i class="material-icons">dashboard</i><span>Dashboard</span>
+                </li>
+                <li><i class="material-icons">person</i><span>User</span></li>
+                <li class="active"><i class="material-icons">folder</i><span>Project</span></li>
+                <li><i class="material-icons">storage</i><span>Data-Manage</span></li>
+            </ul>
+        </aside>
+
+        <main class="content-area">
+            <div class="content-header">
+                <div class="header-left">
+                    <a href="project.html" class="back-link">
+                        <span class="material-icons">arrow_back</span>
+                        <span>返回项目列表</span>
+                    </a>
+                    <h2>项目详情：图像分类</h2>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-secondary"><span class="material-icons">share</span>分享</button>
+                    <button class="btn-primary"><span class="material-icons">settings</span>设置</button>
+                </div>
+            </div>
+
+            <!-- 项目基本信息 -->
+            <div class="project-info-card">
+                <div class="project-header">
+                    <div class="project-title">
+                        <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=facearea&w=48&h=48" alt="图像分类" class="project-avatar">
+                        <div>
+                            <h3>图像分类</h3>
+                            <span class="project-id">项目ID: PRJ-2023-004</span>
+                        </div>
+                    </div>
+                    <div class="project-status">
+                        <span class="status warning">未启动</span>
+                        <span class="creation-date">创建于: 2023-08-15</span>
+                    </div>
+                </div>
+                <div class="project-stats">
+                    <div class="stat-card">
+                        <span class="material-icons">group</span>
+                        <div class="stat-content">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">团队成员</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="material-icons">image</span>
+                        <div class="stat-content">
+                            <div class="stat-value">8,750</div>
+                            <div class="stat-label">训练集图片</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="material-icons">category</span>
+                        <div class="stat-content">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">分类类别</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="material-icons">speed</span>
+                        <div class="stat-content">
+                            <div class="stat-value">--</div>
+                            <div class="stat-label">准确率</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-description">
+                    <h4>项目描述</h4>
+                    <p>该项目旨在开发一个图像分类系统，用于识别和分类12种不同类别的图像。模型基于ResNet50架构，针对产品、景观、动物等类别进行分类。该系统将应用于电子商务、内容审核等场景。</p>
+                </div>
+            </div>
+
+            <!-- 标签页导航 -->
+            <div class="project-tabs">
+                <div class="tab active" data-tab="overview">概览</div>
+                <div class="tab" data-tab="team">团队成员</div>
+                <div class="tab" data-tab="datasets">数据集</div>
+                <div class="tab" data-tab="training">训练记录</div>
+            </div>
+
+            <!-- 概览标签内容 -->
+            <div class="tab-content" id="overview-content">
+                <!-- 训练控制面板 -->
+                <div class="card training-control-card">
+                    <div class="card-header">
+                        <h3>训练控制</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="training-status">
+                            <div class="status-icon">
+                                <span class="material-icons">hourglass_empty</span>
+                            </div>
+                            <div class="status-info">
+                                <h4>准备就绪</h4>
+                                <p>项目数据和配置已准备完毕，可以开始训练。</p>
+                            </div>
+                        </div>
+                        <div class="training-actions">
+                            <button id="start-training-btn" class="btn-primary"><span class="material-icons">play_arrow</span>开始训练</button>
+                            <button class="btn-secondary" disabled><span class="material-icons">pause</span>暂停</button>
+                            <button class="btn-secondary" disabled><span class="material-icons">stop</span>停止</button>
+                        </div>
+                        <div class="training-config">
+                            <h4>训练配置</h4>
+                            <div class="config-grid">
+                                <div class="config-item">
+                                    <span class="config-label">模型架构</span>
+                                    <span class="config-value">ResNet50</span>
+                                </div>
+                                <div class="config-item">
+                                    <span class="config-label">优化器</span>
+                                    <span class="config-value">Adam</span>
+                                </div>
+                                <div class="config-item">
+                                    <span class="config-label">学习率</span>
+                                    <span class="config-value">0.001</span>
+                                </div>
+                                <div class="config-item">
+                                    <span class="config-label">Batch Size</span>
+                                    <span class="config-value">32</span>
+                                </div>
+                                <div class="config-item">
+                                    <span class="config-label">迭代次数</span>
+                                    <span class="config-value">100</span>
+                                </div>
+                                <div class="config-item">
+                                    <span class="config-label">预计训练时间</span>
+                                    <span class="config-value">~1小时</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 训练进度和服务器负载 (初始隐藏) -->
+                <div class="dashboard-grid training-charts hidden">
+                    <!-- 训练进度图表 -->
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h3>训练进度</h3>
+                            <div class="card-actions">
+                                <span class="material-icons">more_vert</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="progress-stats">
+                                <div class="progress-item">
+                                    <span class="progress-label">当前迭代</span>
+                                    <span class="progress-value" id="current-epoch">0/1000</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span class="progress-label">训练时长</span>
+                                    <span class="progress-value" id="training-time">0分钟</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span class="progress-label">学习率</span>
+                                    <span class="progress-value">0.001</span>
+                                </div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progress-bar-fill" style="width: 0%;">0%</div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="trainingChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 服务器负载图表 -->
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h3>服务器负载</h3>
+                            <div class="card-actions">
+                                <span class="material-icons">more_vert</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color blue"></span>
+                                    <span>服务器A (GPU)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color yellow"></span>
+                                    <span>服务器B (CPU)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color light-blue"></span>
+                                    <span>内存占用</span>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="serverChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TensorBoard风格图表 (初始隐藏) -->
+                <div class="card tensorboard-card training-charts hidden">
+                    <div class="card-header">
+                        <h3>训练指标</h3>
+                        <div class="card-actions">
+                            <div class="metric-selector">
+                                <select id="metric-select" aria-label="选择指标类型">
+                                    <option value="loss">损失</option>
+                                    <option value="accuracy">准确率</option>
+                                    <option value="precision">精确率</option>
+                                    <option value="recall">召回率</option>
+                                </select>
+                            </div>
+                            <span class="material-icons">more_vert</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="chart-container large">
+                            <canvas id="metricChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 最近活动 -->
+                <div class="card activities-card">
+                    <div class="card-header">
+                        <h3>最近活动</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="activity-list" id="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-time">2023-08-18 14:35</div>
+                                <div class="activity-icon">
+                                    <span class="material-icons">settings</span>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">配置完成</div>
+                                    <div class="activity-desc">Beth Pacocha完成了训练配置设置</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-time">2023-08-17 11:20</div>
+                                <div class="activity-icon">
+                                    <span class="material-icons">upload</span>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">数据集上传</div>
+                                    <div class="activity-desc">上传了8,750张图片和标注数据</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-time">2023-08-15 09:45</div>
+                                <div class="activity-icon">
+                                    <span class="material-icons">add_circle</span>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">项目创建</div>
+                                    <div class="activity-desc">Beth Pacocha创建了项目</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 团队成员标签内容 -->
+            <div class="tab-content hidden" id="team-content">
+                <div class="card team-card">
+                    <div class="card-header">
+                        <h3>团队成员</h3>
+                        <button class="btn-secondary btn-sm"><span class="material-icons">person_add</span>添加成员</button>
+                    </div>
+                    <div class="card-content">
+                        <table class="team-table">
+                            <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>角色</th>
+                                    <th>邮箱</th>
+                                    <th>加入时间</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="user-info-cell">
+                                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Jaydon Frankie" class="user-avatar">
+                                            <span>Jaydon Frankie</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role admin">项目管理员</span></td>
+                                    <td>luis.crooks@example.com</td>
+                                    <td>2023-08-15</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="修改角色"><span class="material-icons">edit</span></button>
+                                            <button class="btn-icon" title="移除项目"><span class="material-icons">delete</span></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-info-cell">
+                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Beth Pacocha" class="user-avatar">
+                                            <span>Beth Pacocha</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role editor">编辑者</span></td>
+                                    <td>beth.pacocha@example.com</td>
+                                    <td>2023-08-15</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="修改角色"><span class="material-icons">edit</span></button>
+                                            <button class="btn-icon" title="移除项目"><span class="material-icons">delete</span></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-info-cell">
+                                            <img src="https://randomuser.me/api/portraits/men/58.jpg" alt="Alex Robinson" class="user-avatar">
+                                            <span>Alex Robinson</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="role viewer">查看者</span></td>
+                                    <td>alex.robinson@example.com</td>
+                                    <td>2023-08-16</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="修改角色"><span class="material-icons">edit</span></button>
+                                            <button class="btn-icon" title="移除项目"><span class="material-icons">delete</span></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 数据集标签内容 -->
+            <div class="tab-content hidden" id="datasets-content">
+                <div class="card dataset-card">
+                    <div class="card-header">
+                        <h3>数据集信息</h3>
+                        <button class="btn-secondary btn-sm"><span class="material-icons">cloud_upload</span>上传数据</button>
+                    </div>
+                    <div class="card-content">
+                        <div class="dataset-stats">
+                            <div class="stat-card">
+                                <span class="material-icons">image</span>
+                                <div class="stat-content">
+                                    <div class="stat-value">8,750</div>
+                                    <div class="stat-label">总图片数</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <span class="material-icons">label</span>
+                                <div class="stat-content">
+                                    <div class="stat-value">12</div>
+                                    <div class="stat-label">分类数量</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <span class="material-icons">pie_chart</span>
+                                <div class="stat-content">
+                                    <div class="stat-value">80/20</div>
+                                    <div class="stat-label">训练/验证比例</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <span class="material-icons">storage</span>
+                                <div class="stat-content">
+                                    <div class="stat-value">2.4 GB</div>
+                                    <div class="stat-label">数据大小</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dataset-distribution">
+                            <h4>类别分布</h4>
+                            <div class="chart-container">
+                                <canvas id="categoryChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="dataset-files">
+                            <h4>数据文件</h4>
+                            <table class="file-table">
+                                <thead>
+                                    <tr>
+                                        <th>名称</th>
+                                        <th>类型</th>
+                                        <th>大小</th>
+                                        <th>上传时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>classification_images.zip</td>
+                                        <td>ZIP压缩包</td>
+                                        <td>2.1 GB</td>
+                                        <td>2023-08-17</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="下载"><span class="material-icons">download</span></button>
+                                                <button class="btn-icon" title="删除"><span class="material-icons">delete</span></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>class_labels.json</td>
+                                        <td>JSON文件</td>
+                                        <td>245 KB</td>
+                                        <td>2023-08-17</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="下载"><span class="material-icons">download</span></button>
+                                                <button class="btn-icon" title="删除"><span class="material-icons">delete</span></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>dataset_metadata.txt</td>
+                                        <td>文本文件</td>
+                                        <td>5 KB</td>
+                                        <td>2023-08-17</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="下载"><span class="material-icons">download</span></button>
+                                                <button class="btn-icon" title="删除"><span class="material-icons">delete</span></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 训练记录标签内容 -->
+            <div class="tab-content hidden" id="training-content">
+                <div class="card training-card">
+                    <div class="card-header">
+                        <h3>训练记录</h3>
+                        <button id="new-training-btn" class="btn-primary btn-sm"><span class="material-icons">play_arrow</span>开始新训练</button>
+                    </div>
+                    <div class="card-content empty-training-state" id="empty-training-state">
+                        <div class="empty-state">
+                            <span class="material-icons">history</span>
+                            <h4>暂无训练记录</h4>
+                            <p>项目尚未进行过训练，点击"开始新训练"按钮开始第一次训练。</p>
+                        </div>
+                    </div>
+                    <div class="card-content training-records hidden" id="training-records">
+                        <div class="training-filters">
+                            <div class="filter-group">
+                                <label>状态:</label>
+                                <select aria-label="按状态筛选">
+                                    <option value="all">全部</option>
+                                    <option value="completed">已完成</option>
+                                    <option value="training">训练中</option>
+                                    <option value="failed">失败</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>时间:</label>
+                                <select aria-label="按时间筛选">
+                                    <option value="all">全部时间</option>
+                                    <option value="last7">最近7天</option>
+                                    <option value="last30">最近30天</option>
+                                    <option value="last90">最近90天</option>
+                                </select>
+                            </div>
+                            <div class="search-box">
+                                <span class="material-icons">search</span>
+                                <input type="text" placeholder="搜索训练记录...">
+                            </div>
+                        </div>
+
+                        <table class="training-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>开始时间</th>
+                                    <th>持续时间</th>
+                                    <th>配置</th>
+                                    <th>状态</th>
+                                    <th>性能指标</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="training-records-table">
+                                <!-- 训练记录将在JavaScript中动态添加 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/project-detail2.js"></script>
+</body>
+</html> 

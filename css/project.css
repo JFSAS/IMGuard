@@ -50,6 +50,14 @@ body {
     height: 24px;
 }
 
+.logo-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-left: 8px;
+    margin-right: 16px;
+}
+
 .menu-icon {
     cursor: pointer;
     color: var(--text-secondary);
@@ -272,6 +280,23 @@ body {
     border-radius: 4px;
     margin-right: 12px;
     vertical-align: middle;
+}
+
+.project-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: color 0.3s;
+}
+
+.project-link:hover {
+    color: var(--primary-color);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
 }
 
 .status {
