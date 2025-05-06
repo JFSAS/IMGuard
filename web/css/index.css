@@ -44,6 +44,34 @@ h1 {
     font-size: 28px;
 }
 
+.user-type-selection {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.user-type {
+    flex: 1;
+    text-align: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.user-type.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.user-type:first-child {
+    border-right: 1px solid #ddd;
+}
+
 .input-group {
     margin-bottom: 20px;
 }

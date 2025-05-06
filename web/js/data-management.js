@@ -323,4 +323,54 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.upload-settings').classList.add('hidden');
         });
     }
+
+    // 保存设置按钮点击事件
+    const saveSettingsBtn = document.querySelector('.upload-settings .btn-primary');
+    if (saveSettingsBtn) {
+        saveSettingsBtn.addEventListener('click', function() {
+            // 隐藏上传设置区域
+            document.querySelector('.upload-settings').classList.add('hidden');
+            document.querySelector('.upload-card').classList.remove('hidden');
+            
+            // 切换到数据管理标签页
+            const manageTab = document.querySelector('.tab[data-tab="manage"]');
+            if (manageTab) {
+                // 模拟点击管理标签页
+                manageTab.click();
+                
+                // 显示成功提示
+                showNotification('数据集已成功保存！');
+            }
+        });
+    }
+
+    // 显示通知提示
+    function showNotification(message) {
+        // 检查是否已存在通知元素
+        let notification = document.querySelector('.notification');
+        
+        if (!notification) {
+            // 创建通知元素
+            notification = document.createElement('div');
+            notification.className = 'notification';
+            document.body.appendChild(notification);
+        }
+        
+        // 设置通知内容和样式
+        notification.textContent = message;
+        notification.style.display = 'block';
+        
+        // 淡入效果
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 10);
+        
+        // 3秒后淡出并移除
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 300);
+        }, 3000);
+    }
 }); 
